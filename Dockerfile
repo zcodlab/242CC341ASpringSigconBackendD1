@@ -1,21 +1,15 @@
-# Utiliza la imagen oficial de Maven para construir la aplicación
-FROM maven:3.8.4-openjdk-17-slim AS builder
-
-# Copia los archivos del proyecto al contenedor
-COPY ./ /app
+# Fase 1: Construcción
+FROM maven:3.8.4-openjdk-17 AS build
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Compila la aplicación usando Maven
-RUN mvn clean install -DskipTests
-
-# Utiliza la imagen oficial de OpenJDK para ejecutar la aplicación
-FROM openjdk:17-slim
-
-# Copia el artefacto construido desde el contenedor de construcción al contenedor de ejecución
-COPY --from=builder /app/target/242CC341ASpringSigconBackendD1-0.0.1-SNAPSHOT.jar /app/242CC341ASpringSigconBackendD1.jar
-
-# Puerto en el que la aplicación Spring Boot escuchará las solicitudes
+# Fase 2: Ejecución
+FROM openjdk:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/242CC341ASpringSigconBackendD1-0.0.1-SNAPSHOT.jar app.jar
+COPY .env .env
+ENV SPRING_CONFIG_IMPORT=optional:file:.env[.properties]
 EXPOSE 8080
-
-# Comando para ejecutar la aplicación al iniciar el contenedor
-CMD ["java", "-jar", "/app/242CC341ASpringSigconBackendD1.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
