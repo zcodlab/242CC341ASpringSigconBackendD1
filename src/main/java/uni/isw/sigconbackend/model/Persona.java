@@ -42,4 +42,8 @@ public class Persona {
     @JoinColumn(name="id_tipo_documento", referencedColumnName="id_tipo_documento", 
             insertable=false,updatable=false)
     private TipoDocumento tipo_documento;
+    
+    @ManyToOne
+    @JoinColumn(name = "idubigeo", referencedColumnName = "idubigeo",insertable=false, updatable=false)        
+    private Ubigeo ubigeo;
 }
