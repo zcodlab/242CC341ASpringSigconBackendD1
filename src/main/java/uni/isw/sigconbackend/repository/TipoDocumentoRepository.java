@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import uni.isw.sigconbackend.model.TipoDocumento;
 
 @Repository
-public interface TipoDocumentoRepository extends JpaRepository<TipoDocumento, Long>{
+public interface TipoDocumentoRepository extends JpaRepository<TipoDocumento, Integer>{
     
 }

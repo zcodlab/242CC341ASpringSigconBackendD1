@@ -14,7 +14,7 @@ public class TipoDocumentoService {
     public List<TipoDocumento> getTipoDocumentos(){
         return tipoDocumentoRepository.findAll();
     }
-    public Optional<TipoDocumento> getTipoDocumento(Long id){
+    public Optional<TipoDocumento> getTipoDocumento(Integer id){
         return tipoDocumentoRepository.findById(id);
     }
     
@@ -26,7 +26,7 @@ public class TipoDocumentoService {
         tipoDocumentoRepository.save(tipoDocumento);
     }   
     
-    public void deleteTipoDocumento(Long id){
+    public void deleteTipoDocumento(Integer id){
         tipoDocumentoRepository.deleteById(id);
     }
 }

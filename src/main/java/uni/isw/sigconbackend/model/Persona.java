@@ -20,30 +20,29 @@ public class Persona {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_persona",nullable=false)
-    private Long IdPersona;
+    private Long idPersona; //convecion camelCase
     @Column(name="apellido_paterno",nullable=false)
-    private String ApellidoPaterno;
+    private String apellidoPaterno;
     @Column(name="apellido_materno",nullable=false)
-    private String ApellidoMaterno;
+    private String apellidoMaterno;
     @Column(name="nombres",nullable=false)
-    private String Nombres;
+    private String nombres;
     @Column(name="fecha_nacimiento",nullable=false)
-    private Date FechaNacimiento;
-    @Column(name="id_tipo_documento",nullable=false)
-    private Integer IdTipoDocumento;
+    private Date fechaNacimiento;
+    //@Column(name="id_tipo_documento",nullable=false)
+    //private Integer idTipoDocumento;
     @Column(name="ndocumento",nullable=false)
-    private String Ndocumento;
+    private String nDocumento;
     @Column(name="direccion",nullable=false)
-    private String Direccion;
-    @Column(name="idubigeo",nullable=false)
-    private String IdUbigeo;
+    private String direccion;
+    //@Column(name="idubigeo",nullable=false)
+    //private String idUbigeo;
     
-    @ManyToOne
-    @JoinColumn(name="id_tipo_documento", referencedColumnName="id_tipo_documento", 
-            insertable=false,updatable=false)
-    private TipoDocumento tipo_documento;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="id_tipo_documento", referencedColumnName="id_tipo_documento")
+    private TipoDocumento tipoDocumento;    
     
-    @ManyToOne
-    @JoinColumn(name = "idubigeo", referencedColumnName = "idubigeo",insertable=false, updatable=false)        
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idubigeo", referencedColumnName = "idubigeo")        
     private Ubigeo ubigeo;
 }
