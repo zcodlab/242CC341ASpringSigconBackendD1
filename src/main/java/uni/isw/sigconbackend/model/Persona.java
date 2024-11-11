@@ -28,17 +28,13 @@ public class Persona {
     @Column(name="nombres",nullable=false)
     private String nombres;
     @Column(name="fecha_nacimiento",nullable=false)
-    private Date fechaNacimiento;
-    //@Column(name="id_tipo_documento",nullable=false)
-    //private Integer idTipoDocumento;
+    private Date fechaNacimiento;    
     @Column(name="ndocumento",nullable=false)
     private String nDocumento;
     @Column(name="direccion",nullable=false)
-    private String direccion;
-    //@Column(name="idubigeo",nullable=false)
-    //private String idUbigeo;
+    private String direccion;    
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)//LAZY
     @JoinColumn(name="id_tipo_documento", referencedColumnName="id_tipo_documento")
     private TipoDocumento tipoDocumento;    
     

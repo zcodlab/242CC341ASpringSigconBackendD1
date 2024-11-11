@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import uni.isw.sigconbackend.model.Persona;
+import uni.isw.sigconbackend.model.TipoDocumento;
+import uni.isw.sigconbackend.model.Ubigeo;
 
 @Data
 @Builder
@@ -18,13 +20,11 @@ public class PersonaResponse {
     private String apellidoPaterno;    
     private String apellidoMaterno;    
     private String nombres;    
-    private Date fechaNacimiento;    
-    private String tipoDocumento;    
+    private Date fechaNacimiento;        
     private String nDocumento;    
     private String direccion;    
-    private String departamento;
-    private String provincia;
-    private String distrito;
+    private TipoDocumento tipoDocumento;    
+    private Ubigeo ubigeo;    
     
     public static PersonaResponse fromEntity(Persona persona) {
         return PersonaResponse.builder()
@@ -32,13 +32,11 @@ public class PersonaResponse {
                 .apellidoPaterno(persona.getApellidoPaterno())
                 .apellidoMaterno(persona.getApellidoMaterno())
                 .nombres(persona.getNombres())
-                .fechaNacimiento(persona.getFechaNacimiento())
-                .tipoDocumento(persona.getTipoDocumento()==null ? "":persona.getTipoDocumento().getDescripcion())
+                .fechaNacimiento(persona.getFechaNacimiento())                
                 .nDocumento(persona.getNDocumento())
-                .direccion(persona.getDireccion())                
-                .departamento(persona.getUbigeo()==null ? "": persona.getUbigeo().getDepartamento())
-                .provincia(persona.getUbigeo()==null ? "": persona.getUbigeo().getProvincia())
-                .distrito(persona.getUbigeo()==null ? "": persona.getUbigeo().getDistrito())                
+                .direccion(persona.getDireccion())            
+                .tipoDocumento(persona.getTipoDocumento())
+                .ubigeo(persona.getUbigeo())                //.provincia(persona.getUbigeo()==null ? "": persona.getUbigeo().getProvincia())
                 .build();
     }
     
