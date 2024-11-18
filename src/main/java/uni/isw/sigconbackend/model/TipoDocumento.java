@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
 public class TipoDocumento {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id_tipo_documento",nullable=false)
-    private Integer IdTipoDocumento;
-    @Column(name="descripcion",nullable=false)
+    @Column(name="id_tipo_documento")
+    private Integer idTipoDocumento;
+    @Column(name="descripcion")
     private String descripcion;    
     
 }

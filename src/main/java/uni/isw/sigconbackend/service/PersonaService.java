@@ -1,6 +1,8 @@
 package uni.isw.sigconbackend.service;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uni.isw.sigconbackend.dto.PersonaRequest;
@@ -14,6 +16,7 @@ import uni.isw.sigconbackend.repository.UbigeoRepository;
 
 @Service
 public class PersonaService {
+    private final Logger logger=LoggerFactory.getLogger(this.getClass());
     @Autowired
     PersonaRepository personaRepository;
     @Autowired
@@ -31,10 +34,12 @@ public class PersonaService {
     public PersonaResponse insertPersona(PersonaRequest personaRequest){        
         Integer idTipoDocumento=personaRequest.getIdTipoDocumento();
         TipoDocumento tipoDocumento=tipoDocumentoRepository.findById(idTipoDocumento).get();
+        logger.info(">insertPersona-tipoDocumento" +  tipoDocumento.toString());
         if (tipoDocumento==null) return new PersonaResponse();
         
         String idUbigeo=personaRequest.getIdUbigeo();
         Ubigeo ubigeo=ubigeoRepository.findById(idUbigeo).get();
+        logger.info(">insertPersona-ubigeo" +  ubigeo.toString());
         if (ubigeo==null) return new PersonaResponse();
         
         Persona persona=new Persona(

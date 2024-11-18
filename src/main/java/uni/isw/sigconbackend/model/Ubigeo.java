@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 @Table(name="ubigeo")
 public class Ubigeo {
     @Id    
-    @Column(name="idubigeo",nullable=false)
-    private String IdUbigeo;
-    @Column(name="departamento",nullable=false)
-    private String Departamento;
-    @Column(name="provincia",nullable=false)
-    private String Provincia;
-    @Column(name="distrito",nullable=false)
-    private String Distrito;            
+    @Column(name="idubigeo")
+    private String idUbigeo;
+    @Column(name="departamento")
+    private String departamento;
+    @Column(name="provincia")
+    private String provincia;
+    @Column(name="distrito")
+    private String distrito;            
 }
