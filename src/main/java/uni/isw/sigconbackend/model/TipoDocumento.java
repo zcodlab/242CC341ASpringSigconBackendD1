@@ -18,8 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name="tipo_documento")
 public class TipoDocumento {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id    
     @Column(name="id_tipo_documento")
     private Integer idTipoDocumento;
     @Column(name="descripcion")
